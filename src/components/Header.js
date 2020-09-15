@@ -1,86 +1,9 @@
-import { useIsHome } from '@/hooks/useIsHome'
 import Link from 'next/link'
 import { VersionSwitcher } from '@/components/VersionSwitcher'
 import { Search } from '@/components/Search'
-import dynamic from 'next/dynamic'
 import clsx from 'clsx'
 
-const WorkflowAnimation = dynamic(() =>
-  import('@/components/WorkflowAnimation').then((mod) => mod.WorkflowAnimation)
-)
-
 export function Header({ navIsOpen, onNavToggle }) {
-  let isHome = useIsHome()
-
-  if (isHome) {
-    return (
-      <div id="header">
-        <div className="bg-gray-100 pt-24 lg:pt-0">
-          <div className="fixed z-100 bg-gray-100 inset-x-0 top-0 border-b-2 border-gray-200 lg:border-b-0 lg:static flex items-center">
-            <div className="w-full max-w-screen-xl relative mx-auto px-6">
-              <div className="lg:border-b-2 lg:border-gray-200 h-24 flex flex-col justify-center">
-                <HeaderInner navIsOpen={navIsOpen} onNavToggle={onNavToggle} />
-              </div>
-            </div>
-          </div>
-          <div className="w-full max-w-screen-xl relative mx-auto px-6 pt-16 pb-40 md:pb-24">
-            <div className="xl:flex -mx-6">
-              <div className="px-6 text-left md:text-center xl:text-left max-w-2xl md:max-w-3xl mx-auto">
-                <h1 className="text-3xl tracking-tight sm:text-4xl md:text-5xl xl:text-4xl font-medium leading-tight">
-                  A utility-first CSS framework for{' '}
-                  <span className="sm:block text-teal-500 font-medium">
-                    rapidly building custom designs.
-                  </span>
-                </h1>
-                <p className="mt-6 leading-relaxed sm:text-lg md:text-xl xl:text-lg text-gray-600">
-                  Tailwind CSS is a highly customizable, low-level CSS framework that gives you all
-                  of the building blocks you need to build bespoke designs without any annoying
-                  opinionated styles you have to fight to override.
-                </p>
-                <div className="flex mt-6 justify-start md:justify-center xl:justify-start">
-                  <Link href="/docs/installation">
-                    <a className="rounded-lg px-4 md:px-5 xl:px-4 py-3 md:py-4 xl:py-3 bg-teal-500 hover:bg-teal-600 md:text-lg xl:text-base text-white font-semibold leading-tight shadow-md">
-                      Get Started
-                    </a>
-                  </Link>
-                  <a
-                    href="#what-is-tailwind"
-                    className="ml-4 rounded-lg px-4 md:px-5 xl:px-4 py-3 md:py-4 xl:py-3 bg-white hover:bg-gray-200 md:text-lg xl:text-base text-gray-800 font-semibold leading-tight shadow-md"
-                  >
-                    Why Tailwind?
-                  </a>
-                </div>
-              </div>
-              <div className="mt-12 xl:mt-0 px-6 flex-shrink-0 hidden md:block">
-                <div className="mx-auto" style={{ width: '40rem', height: '30rem' }}>
-                  <div className="flex flex-col p-2">
-                    <WorkflowAnimation />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="bg-wave bg-center bg-repeat-x -mb-8 md:hidden"
-          style={{
-            height: `${190 * 0.75}px`,
-            marginTop: `-${190 * 0.75}px`,
-            backgroundSize: `${1440 * 0.75}px ${190 * 0.75}px`,
-          }}
-        />
-        <div
-          className="bg-wave bg-center bg-repeat-x -mb-8 hidden md:block"
-          style={{
-            height: '190px',
-            marginTop: '-190px',
-            backgroundSize: '1440px 190px',
-          }}
-        />
-      </div>
-    )
-  }
-
   return (
     <div>
       <div id="header">
@@ -95,8 +18,6 @@ export function Header({ navIsOpen, onNavToggle }) {
 }
 
 function HeaderInner({ navIsOpen, onNavToggle }) {
-  let isHome = useIsHome()
-
   return (
     <div className="flex items-center -mx-6">
       <div className="lg:w-1/4 xl:w-1/5 pl-6 pr-6 lg:pr-8">
@@ -104,10 +25,7 @@ function HeaderInner({ navIsOpen, onNavToggle }) {
           <Link href="/">
             <a className="block lg:mr-4">
               <svg
-                className={clsx('w-auto hidden md:block', {
-                  'h-12': isHome,
-                  'h-10': !isHome,
-                })}
+                className="w-auto hidden md:block h-10"
                 viewBox="0 0 273 64"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +62,7 @@ function HeaderInner({ navIsOpen, onNavToggle }) {
                 viewBox="0 0 64 64"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <title>Tailwind CSS</title>
+                <title>Documentation</title>
                 <path
                   d="M13.5 11.1C15.3 3.9 19.8.3 27 .3c10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 27.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"
                   transform="translate(5 16)"
@@ -221,8 +139,8 @@ function HeaderInner({ navIsOpen, onNavToggle }) {
           </div>
           <div className="flex justify-start items-center text-gray-500">
             <a
-              className="block flex items-center hover:text-gray-700 mr-5"
-              href="https://github.com/tailwindlabs/tailwindcss"
+              className="flex items-center hover:text-gray-700 mr-5"
+              href="https://github.com/shopperlabs/framework"
             >
               <svg
                 className="fill-current w-5 h-5"
@@ -234,8 +152,8 @@ function HeaderInner({ navIsOpen, onNavToggle }) {
               </svg>
             </a>
             <a
-              className="block flex items-center hover:text-gray-700 mr-5"
-              href="https://twitter.com/tailwindcss"
+              className="flex items-center hover:text-gray-700 mr-5"
+              href="https://twitter.com/laravelshopper"
             >
               <svg
                 className="fill-current w-5 h-5"
@@ -246,7 +164,7 @@ function HeaderInner({ navIsOpen, onNavToggle }) {
                 <path d="M6.29 18.25c7.55 0 11.67-6.25 11.67-11.67v-.53c.8-.59 1.49-1.3 2.04-2.13-.75.33-1.54.55-2.36.65a4.12 4.12 0 0 0 1.8-2.27c-.8.48-1.68.81-2.6 1a4.1 4.1 0 0 0-7 3.74 11.65 11.65 0 0 1-8.45-4.3 4.1 4.1 0 0 0 1.27 5.49C2.01 8.2 1.37 8.03.8 7.7v.05a4.1 4.1 0 0 0 3.3 4.03 4.1 4.1 0 0 1-1.86.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 0 16.4a11.62 11.62 0 0 0 6.29 1.84" />
               </svg>
             </a>
-            <a className="block flex items-center hover:text-gray-700" href="/discord">
+            <a className="flex items-center hover:text-gray-700" href="https://discord.gg/AqWpFVR">
               <svg
                 className="fill-current w-5 h-5"
                 xmlns="http://www.w3.org/2000/svg"

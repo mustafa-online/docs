@@ -8,7 +8,6 @@ import {
   useContext,
 } from 'react'
 import { ClassTable } from '@/components/ClassTable'
-import { useIsHome } from '@/hooks/useIsHome'
 import { usePrevNext } from '@/hooks/usePrevNext'
 import Link from 'next/link'
 import { SidebarLayout, SidebarContext } from '@/layouts/SidebarLayout'
@@ -168,21 +167,14 @@ export function ContentsLayout({ children, meta, classes, tableOfContents }) {
   ]
 
   const { currentSection, registerHeading, unregisterHeading } = useTableOfContents(toc)
-  let isHome = useIsHome()
   let { prev, next } = usePrevNext()
 
   return (
-    <div
-      id={meta.containerId}
-      className={clsx('pb-16 w-full', {
-        'pt-12': isHome,
-        'pt-24 lg:pt-28': !isHome,
-      })}
-    >
+    <div id={meta.containerId} className="pb-16 w-full pt-24 lg:pt-28">
       <PageHeader
         title={meta.title}
         description={meta.description}
-        badge={{ key: 'Tailwind CSS version', value: meta.featureVersion }}
+        badge={{ key: 'Laravel Shopper version', value: meta.featureVersion }}
         border={!classes && meta.headerSeparator !== false}
       />
       <div className="flex">
@@ -216,15 +208,7 @@ export function ContentsLayout({ children, meta, classes, tableOfContents }) {
           )}
         </div>
         <div className="hidden xl:text-sm xl:block xl:w-1/4 xl:px-6">
-          <div
-            className={clsx(
-              'flex flex-col justify-between overflow-y-auto sticky max-h-(screen-16) pt-12 pb-4 -mt-12',
-              {
-                'top-0': isHome,
-                'top-16': !isHome,
-              }
-            )}
-          >
+          <div className="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-16) pt-12 pb-4 -mt-12 top-16">
             {toc.length > 0 && (
               <div className="mb-8">
                 <TableOfContents tableOfContents={toc} currentSection={currentSection} />

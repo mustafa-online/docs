@@ -30,25 +30,25 @@ module.exports = {
       },
       spacing: {
         '2px': '2px',
-        '7': '1.75rem',
-        '10': '2.5rem',
-        '12': '3rem',
-        '16': '4rem',
-        '20': '5rem',
-        '24': '6rem',
-        '28': '7rem',
-        '32': '8rem',
-        '80': '20rem',
-        '128': '32rem',
+        7: '1.75rem',
+        10: '2.5rem',
+        12: '3rem',
+        16: '4rem',
+        20: '5rem',
+        24: '6rem',
+        28: '7rem',
+        32: '8rem',
+        80: '20rem',
+        128: '32rem',
         '(screen-16)': 'calc(100vh - 4rem)',
       },
       inset: {
-        '16': '4rem',
-        '20': '5rem',
-        '24': '6rem',
+        16: '4rem',
+        20: '5rem',
+        24: '6rem',
       },
       borderWidth: {
-        '6': '6px',
+        6: '6px',
       },
       maxWidth: (theme) => ({
         'screen-xl': theme('screens.xl'),
@@ -62,16 +62,29 @@ module.exports = {
         'md-light': '0 0 12px 8px rgb(255,255,255)',
       },
       zIndex: {
-        '90': '90',
-        '100': '100',
+        90: '90',
+        100: '100',
       },
     },
+    typography: (theme) => ({
+      default: {
+        css: {
+          a: {
+            color: theme('colors.blue.600'),
+            '&:hover': {
+              color: theme('colors.blue.400'),
+            },
+          },
+        },
+      },
+    }),
   },
   variants: {
     backgroundColor: ['responsive', 'odd', 'even', 'hover', 'focus'],
     borderColor: ['responsive', 'hover', 'focus'],
     borderWidth: ['responsive', 'first', 'last', 'hover', 'focus'],
     textColor: ['responsive', 'group-focus', 'group-hover', 'hover', 'focus'],
-    opacity: ['responsive', 'hover', 'focus', 'disabled', 'group-hover'],
+    translate: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
   },
+  plugins: [require('@tailwindcss/ui'), require('@tailwindcss/typography')],
 }

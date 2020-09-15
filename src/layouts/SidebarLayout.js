@@ -14,14 +14,14 @@ const NavItem = forwardRef(({ href, children, isActive, isPublished, fallbackHre
       <Link href={isPublished ? href : fallbackHref}>
         <a
           className={clsx('px-2 -mx-2 py-1 transition duration-200 ease-in-out relative block', {
-            'text-teal-600 font-medium': isActive,
-            'hover:translate-x-2px hover:text-gray-900 text-gray-600 font-medium':
+            'text-blue-600 font-medium': isActive,
+            'hover:translate-x-2px hover:text-gray-900 text-gray-500 font-medium':
               !isActive && isPublished,
             'hover:translate-x-2px text-gray-400 font-medium': !isActive && !isPublished,
           })}
         >
           <span
-            className={clsx('rounded absolute inset-0 bg-teal-200', {
+            className={clsx('rounded absolute inset-0 bg-blue-200', {
               'opacity-25': isActive,
               'opacity-0': !isActive,
             })}
@@ -35,7 +35,6 @@ const NavItem = forwardRef(({ href, children, isActive, isPublished, fallbackHre
 
 function Nav({ nav, children, fallbackHref }) {
   const router = useRouter()
-  const isHome = useIsHome()
   const activeItemRef = useRef()
   const scrollRef = useRef()
 
@@ -52,10 +51,7 @@ function Nav({ nav, children, fallbackHref }) {
     <nav
       id="nav"
       ref={scrollRef}
-      className={clsx('px-6 pt-6 overflow-y-auto text-base lg:text-sm lg:py-12 lg:pl-6 lg:pr-8', {
-        'sticky?lg:h-screen': isHome,
-        'sticky?lg:h-(screen-16)': !isHome,
-      })}
+      className="px-6 pt-6 overflow-y-auto text-base lg:text-sm lg:py-12 lg:pl-6 lg:pr-8 sticky?lg:h-(screen-16)"
     >
       <div className="relative -mx-2 w-24 mb-8 lg:hidden">
         <VersionSwitcher />
@@ -76,10 +72,10 @@ function Nav({ nav, children, fallbackHref }) {
               <div className="mb-8" key={category}>
                 <h5
                   className={clsx(
-                    'mb-3 lg:mb-2 uppercase tracking-wide font-bold text-sm lg:text-xs',
+                    'mb-3 lg:mb-4 uppercase tracking-wide font-bold text-sm lg:text-xs',
                     {
-                      'text-gray-500': publishedItems.length > 0,
-                      'text-gray-400': publishedItems.length === 0,
+                      'text-gray-600': publishedItems.length > 0,
+                      'text-gray-500': publishedItems.length === 0,
                     }
                   )}
                 >
@@ -122,7 +118,7 @@ const TopLevelAnchor = forwardRef(({ children, href, className, icon, isActive, 
         }
       )}
     >
-      <svg className="h-6 w-6" viewBox="0 0 24 24">
+      <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24">
         {icon}
       </svg>
       <span className="ml-3">{children}</span>
@@ -149,94 +145,64 @@ function TopLevelNav() {
   return (
     <div className="mb-10">
       <TopLevelLink
-        href="/docs/installation"
+        href="/docs/introduction"
         isActive={current === '' || current === 'docs'}
         icon={
           <>
             <path
-              className="text-gray-400 fill-current"
-              d="M12 21a2 2 0 0 1-1.41-.59l-.83-.82A2 2 0 0 0 8.34 19H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4a5 5 0 0 1 4 2v16z"
+              d="M18 2H8a4 4 0 0 0-4 4v12a4 4 0 0 0 4 4h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zM6 6a2 2 0 0 1 2-2h10v10H8a3.91 3.91 0 0 0-2 .56V6zm2 14a2 2 0 1 1 0-4h10v4H8zm2-12h4a1 1 0 1 0 0-2h-4a1 1 0 0 0 0 2z"
+              fill="url(#1-doc)"
             />
-            <path
-              className="text-gray-700 fill-current"
-              d="M12 21V5a5 5 0 0 1 4-2h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4.34a2 2 0 0 0-1.42.59l-.83.82A2 2 0 0 1 12 21z"
-            />
+            <defs>
+              <linearGradient
+                id="1-doc"
+                x1="5.712"
+                y1="12"
+                x2="16.182"
+                y2="12"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stopColor="#6875F5" />
+                <stop offset=".513" stopColor="#3F83F8" />
+                <stop offset="1" stopColor="#1A56DB" />
+              </linearGradient>
+            </defs>
           </>
         }
       >
         Documentation
       </TopLevelLink>
       <TopLevelLink
-        href="/components"
-        isActive={current === 'components'}
+        href="/screencasts"
+        isActive={current === 'screencasts'}
         className="mt-3 lg:mt-1"
         icon={
           <>
             <path
-              className="text-gray-400 fill-current"
-              d="M3 6l9 4v12l-9-4V6zm14-3v2c0 1.1-2.24 2-5 2s-5-.9-5-2V3c0 1.1 2.24 2 5 2s5-.9 5-2z"
+              d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1z"
+              stroke="url(#1-screen)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
-            <polygon className="text-gray-700 fill-current" points="21 6 12 10 12 22 21 18" />
-          </>
-        }
-      >
-        Components
-      </TopLevelLink>
-      <TopLevelLink
-        href="/course"
-        isActive={current === 'course'}
-        className="mt-3 lg:mt-1"
-        icon={
-          <>
-            <path
-              className="text-gray-400 fill-current"
-              d="M4 3h16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2zm0 2v2h2V5H4zm0 4v2h2V9H4zm0 4v2h2v-2H4zm0 4v2h2v-2H4zM18 5v2h2V5h-2zm0 4v2h2V9h-2zm0 4v2h2v-2h-2zm0 4v2h2v-2h-2z"
-            />
-            <path
-              className="text-gray-700 fill-current"
-              d="M9 5h6a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm0 8h6a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1z"
-            />
+            <defs>
+              <linearGradient
+                id="1-screen"
+                x1="4.926"
+                y1="12"
+                x2="16.704"
+                y2="12"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stopColor="#6875F5" />
+                <stop offset=".513" stopColor="#3F83F8" />
+                <stop offset="1" stopColor="#1A56DB" />
+              </linearGradient>
+            </defs>
           </>
         }
       >
         Screencasts
-      </TopLevelLink>
-      <TopLevelLink
-        href="https://blog.tailwindcss.com"
-        className="mt-3 lg:mt-1"
-        icon={
-          <g fillRule="evenodd" clipRule="evenodd">
-            <path
-              fill="#CBD5E0"
-              d="M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5zm2 3a1 1 0 00-1 1v4a1 1 0 001 1h3a1 1 0 001-1V7a1 1 0 00-1-1H7z"
-            />
-            <path
-              fill="#4A5568"
-              d="M13 7a1 1 0 011-1h3a1 1 0 110 2h-3a1 1 0 01-1-1zm-7 8a1 1 0 011-1h10a1 1 0 011 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1v-2zm8-5a1 1 0 100 2h3a1 1 0 100-2h-3z"
-            />
-          </g>
-        }
-      >
-        Blog
-      </TopLevelLink>
-      <TopLevelLink
-        href="/resources"
-        isActive={current === 'resources'}
-        className="mt-3 lg:mt-1"
-        icon={
-          <>
-            <path
-              className="text-gray-400 fill-current"
-              d="M9 22c.19-.14.37-.3.54-.46L17.07 14H20a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H9zM4 2h4a2 2 0 0 1 2 2v14a4 4 0 1 1-8 0V4c0-1.1.9-2 2-2zm2 17.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"
-            />
-            <path
-              className="text-gray-700 fill-current"
-              d="M11 18.66V7.34l2.07-2.07a2 2 0 0 1 2.83 0l2.83 2.83a2 2 0 0 1 0 2.83L11 18.66z"
-            />
-          </>
-        }
-      >
-        Resources
       </TopLevelLink>
       <TopLevelLink
         href="/community"
@@ -245,17 +211,126 @@ function TopLevelNav() {
         icon={
           <>
             <path
-              className="text-gray-400 fill-current"
-              d="M20.3 12.04l1.01 3a1 1 0 0 1-1.26 1.27l-3.01-1a7 7 0 1 1 3.27-3.27zM11 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+              d="M17 8h2a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2v4l-4-4H9a1.995 1.995 0 0 1-1.414-.586m0 0L11 14h4a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2v4l.586-.586z"
+              stroke="url(#1-community)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
-            <path
-              className="text-gray-700 fill-current"
-              d="M15.88 17.8a7 7 0 0 1-8.92 2.5l-3 1.01a1 1 0 0 1-1.27-1.26l1-3.01A6.97 6.97 0 0 1 5 9.1a9 9 0 0 0 10.88 8.7z"
-            />
+            <defs>
+              <linearGradient
+                id="1-community"
+                x1="4.926"
+                y1="13"
+                x2="16.704"
+                y2="13"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stopColor="#6875F5" />
+                <stop offset=".513" stopColor="#3F83F8" />
+                <stop offset="1" stopColor="#1A56DB" />
+              </linearGradient>
+            </defs>
           </>
         }
       >
         Community
+      </TopLevelLink>
+      <TopLevelLink
+        href="/team"
+        isActive={current === 'team'}
+        className="mt-3 lg:mt-1"
+        icon={
+          <>
+            <path
+              d="M12 4.354a4 4 0 1 1 0 5.292M15 21H3v-1a6 6 0 1 1 12 0v1zm0 0h6v-1a6 6 0 0 0-9-5.197M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"
+              stroke="url(#1-team)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <defs>
+              <linearGradient
+                id="1-team"
+                x1="4.926"
+                y1="12"
+                x2="16.704"
+                y2="12"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stopColor="#6875F5" />
+                <stop offset=".513" stopColor="#3F83F8" />
+                <stop offset="1" stopColor="#1A56DB" />
+              </linearGradient>
+            </defs>
+          </>
+        }
+      >
+        Team
+      </TopLevelLink>
+      <TopLevelLink
+        href="/sponsors"
+        isActive={current === 'sponsors'}
+        className="mt-3 lg:mt-1"
+        icon={
+          <>
+            <path
+              d="M3.343 7.778a4.5 4.5 0 0 1 7.339-1.46L12 7.636l1.318-1.318a4.5 4.5 0 0 1 6.364 6.364L12 20.364l-7.682-7.682a4.499 4.499 0 0 1-.975-4.904z"
+              stroke="url(#1-sponsor)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <defs>
+              <linearGradient
+                id="1-sponsor"
+                x1="4.926"
+                y1="12.682"
+                x2="16.705"
+                y2="12.682"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stopColor="#6875F5" />
+                <stop offset=".513" stopColor="#3F83F8" />
+                <stop offset="1" stopColor="#1A56DB" />
+              </linearGradient>
+            </defs>
+          </>
+        }
+      >
+        Sponsors
+      </TopLevelLink>
+      <TopLevelLink
+        href="/support"
+        isActive={current === 'support'}
+        className="mt-3 lg:mt-1"
+        icon={
+          <>
+            <path
+              d="M18.364 5.636l-3.536 3.536m3.536-3.536a9 9 0 0 0-12.728 0m12.728 0a9 9 0 0 1 0 12.728m-3.536-9.192a4 4 0 0 0-5.656 0m5.656 0a4 4 0 0 1 0 5.656m0 0l3.536 3.536m-3.536-3.536a4 4 0 0 1-5.656 0m9.192 3.536a9 9 0 0 1-12.728 0m3.536-9.192L5.636 5.636m3.536 3.536a4 4 0 0 0 0 5.656M5.636 5.636a9 9 0 0 0 0 12.728m3.536-3.536l-3.536 3.536"
+              stroke="url(#1-sponsor)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <defs>
+              <linearGradient
+                id="1-sponsor"
+                x1="4.926"
+                y1="12"
+                x2="16.704"
+                y2="12"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stopColor="#6875F5" />
+                <stop offset=".513" stopColor="#3F83F8" />
+                <stop offset="1" stopColor="#1A56DB" />
+              </linearGradient>
+            </defs>
+          </>
+        }
+      >
+        Support
       </TopLevelLink>
     </div>
   )
@@ -271,32 +346,16 @@ export function SidebarLayout({ children, navIsOpen, setNavIsOpen, nav, sidebar,
           <div
             id="sidebar"
             className={clsx(
-              'fixed inset-0 h-full bg-white z-90 w-full border-b -mb-16 lg:-mb-0 lg:static lg:h-auto lg:overflow-y-visible lg:border-b-0 lg:pt-0 lg:w-1/4 lg:block lg:border-0 xl:w-1/5',
+              'fixed inset-0 h-full z-90 w-full border-b -mb-16 lg:-mb-0 lg:static lg:h-auto lg:overflow-y-visible lg:border-b-0 lg:pt-0 lg:w-1/4 lg:block lg:border-0 xl:w-1/5 pt-16 transition duration-200 ease-in-out',
               {
                 hidden: !navIsOpen,
-                'pt-24': isHome,
-                'pt-16': !isHome,
               }
             )}
           >
             <div
               id="navWrapper"
-              className={clsx(
-                'h-full overflow-y-auto scrolling-touch lg:h-auto lg:block lg:relative lg:sticky lg:bg-transparent overflow-hidden',
-                {
-                  'lg:top-0 bg-gray-100': isHome,
-                  'lg:top-16 bg-white': !isHome,
-                }
-              )}
+              className="h-full overflow-y-auto scrolling-touch lg:h-auto lg:block lg:sticky lg:bg-transparent overflow-hidden lg:top-16 bg-white"
             >
-              {isHome && (
-                <div
-                  className="hidden lg:block h-16 pointer-events-none absolute inset-x-0 z-10"
-                  style={{
-                    backgroundImage: 'linear-gradient(rgba(255,255,255,1), rgba(255,255,255,0))',
-                  }}
-                />
-              )}
               <Nav nav={nav} fallbackHref={fallbackHref}>
                 {sidebar}
               </Nav>
@@ -305,7 +364,7 @@ export function SidebarLayout({ children, navIsOpen, setNavIsOpen, nav, sidebar,
           <div
             id="content-wrapper"
             className={clsx(
-              'min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible lg:w-3/4 xl:w-4/5',
+              'min-h-screen w-full lg:static lg:max-h-full lg:overflow-visible lg:w-3/4 xl:w-4/5 transition duration-200 ease-in-out',
               {
                 'overflow-hidden max-h-screen fixed': navIsOpen,
               }

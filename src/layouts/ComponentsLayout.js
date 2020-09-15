@@ -27,7 +27,7 @@ export function ComponentsLayout(props) {
         <meta
           key="twitter:image"
           name="twitter:image"
-          content={`https://tailwindcss.com${twitterSquare}`}
+          content={`https://docs.laravelshopper.io${twitterSquare}`}
         />
       </Head>
       <SidebarLayout nav={nav} {...props} />

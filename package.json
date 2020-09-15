@@ -17,6 +17,8 @@
     "@next/mdx": "^9.4.4",
     "@reach/rect": "^0.10.5",
     "@sindresorhus/slugify": "^1.1.0",
+    "@tailwindcss/typography": "^0.2.0",
+    "@tailwindcss/ui": "^0.6.1",
     "autoprefixer": "^9.8.5",
     "babel-plugin-preval": "^5.0.0",
     "brotli-size": "^4.0.0",

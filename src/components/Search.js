@@ -1,11 +1,9 @@
-import { useIsHome } from '@/hooks/useIsHome'
 import { useState, useCallback, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { DocSearchModal, useDocSearchKeyboardEvents } from '@docsearch/react'
-import clsx from 'clsx'
 
 function Hit({ hit, children }) {
   return (
@@ -16,7 +14,6 @@ function Hit({ hit, children }) {
 }
 
 export function Search() {
-  const isHome = useIsHome()
   const router = useRouter()
   const [isOpen, setIsOpen] = useState(false)
   const searchButtonRef = useRef()
@@ -54,15 +51,9 @@ export function Search() {
       <button
         ref={searchButtonRef}
         onClick={onOpen}
-        className={clsx(
-          'transition-colors duration-100 ease-in-out text-gray-600 py-2 pr-4 pl-10 block w-full appearance-none leading-normal border border-transparent rounded-lg focus:outline-none text-left select-none truncate',
-          {
-            'bg-white shadow-md': isHome,
-            'focus:bg-white focus:border-gray-300 bg-gray-200': !isHome,
-          }
-        )}
+        className="transition-colors duration-100 ease-in-out text-gray-600 py-2 pr-12 pl-10 block w-full appearance-none leading-normal border border-transparent rounded-lg focus:outline-none text-left select-none truncate focus:bg-white border-gray-200 focus:border-gray-300 bg-gray-50"
       >
-        Search <span className="hidden sm:inline">the docs (Press "/" to focus)</span>
+        Search <span className="hidden sm:inline">the docs</span>
       </button>
       {isOpen &&
         createPortal(
@@ -107,6 +98,22 @@ export function Search() {
         >
           <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
         </svg>
+      </div>
+      <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+        <span className="text-gray-500 sm:text-sm sm:leading-5">
+          <kbd
+            className="border border-gray-300 mr-1 bg-gray-100 align-middle p-0 inline-flex justify-center items-center  text-xs text-center rounded group-hover:border-gray-300 transition duration-150 ease-in-out "
+            style={{ minWidth: '1.8em' }}
+          >
+            ⌘
+          </kbd>
+          <kbd
+            className="border border-gray-300 bg-gray-100 align-middle p-0 inline-flex justify-center items-center  text-xs text-center ml-auto mr-0 rounded group-hover:border-gray-300 transition duration-150 ease-in-out "
+            style={{ minWidth: '1.8em' }}
+          >
+            K
+          </kbd>
+        </span>
       </div>
     </div>
   )
