@@ -17,7 +17,7 @@ export function Ad() {
           href="https://squashr.io/?utm_source=laravelshopper&utm_medium=sidebar-widget"
           className="text-gray-700"
         >
-          Upload and compress file in real-time with Squashr.
+          Upload and compress files in real-time with Squashr.
         </a>
       </p>
       <div className="mt-2">
