@@ -1,6 +1,6 @@
 {
   "redirects": [
-    { "source": "/docs", "destination": "/docs/introduction", "permanent": false },
+    { "source": "/docs", "destination": "/docs/installation", "permanent": false },
     { "source": "/discord", "destination": "https://discord.gg/AqWpFVR", "permanent": false },
     {
       "source": "/forum",

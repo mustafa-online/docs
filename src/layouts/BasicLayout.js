@@ -11,7 +11,7 @@ export function BasicLayout({ children, meta, classes, tableOfContents }) {
         border={meta.headerSeparator !== false}
       />
       <div className="flex">
-        <div className="markdown px-6 xl:px-12 w-full max-w-3xl mx-auto lg:ml-0 lg:mr-auto xl:mx-0 xl:w-3/4">
+        <div className="markdown prose lg:prose-lg px-6 xl:px-12 w-full max-w-3xl mx-auto lg:ml-0 lg:mr-auto xl:mx-0 xl:w-3/4">
           {children}
         </div>
         <div className="hidden xl:text-sm xl:block xl:w-1/4 xl:px-6">

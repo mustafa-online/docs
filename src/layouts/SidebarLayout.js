@@ -145,7 +145,7 @@ function TopLevelNav() {
   return (
     <div className="mb-10">
       <TopLevelLink
-        href="/docs/introduction"
+        href="/docs/installation"
         isActive={current === '' || current === 'docs'}
         icon={
           <>

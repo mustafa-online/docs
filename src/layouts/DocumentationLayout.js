@@ -11,8 +11,14 @@ const pages = createPageList(
 )
 
 const nav = {
-  Prologue: [pages['introduction'], pages['what-is-shopper'], pages['release-notes']],
-  'Getting started': [pages['installation'], pages['upcoming-changes'], pages['upgrading-to-v2']],
+  Prologue: [
+    pages['release-notes'],
+    pages['upcoming-changes'],
+    pages['contribution-guide'],
+    pages['roadmap'],
+    pages['upgrading-to-v2'],
+  ],
+  'Getting started': [pages['installation']],
   'Core Concepts': [pages['settings']],
   Customization: [pages['configuration']],
 }
