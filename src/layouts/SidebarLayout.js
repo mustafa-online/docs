@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { VersionSwitcher } from '@/components/VersionSwitcher'
-import { useIsHome } from '@/hooks/useIsHome'
 import { createContext, forwardRef, useRef } from 'react'
 import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 import clsx from 'clsx'
@@ -337,8 +336,6 @@ function TopLevelNav() {
 }
 
 export function SidebarLayout({ children, navIsOpen, setNavIsOpen, nav, sidebar, fallbackHref }) {
-  let isHome = useIsHome()
-
   return (
     <SidebarContext.Provider value={{ nav, navIsOpen, setNavIsOpen }}>
       <div className="w-full max-w-screen-xl mx-auto px-6">
