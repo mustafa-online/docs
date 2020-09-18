@@ -39,9 +39,9 @@ export function Search() {
   useEffect(() => {
     Mousetrap.bind('command+k', function (e) {
       e.preventDefault()
-      setIsOpen(!isOpen)
+      setIsOpen(true)
     })
-  }, [])
+  })
 
   useDocSearchKeyboardEvents({
     isOpen,
@@ -73,9 +73,9 @@ export function Search() {
               distinct: 1,
             }}
             onClose={onClose}
-            indexName="tailwindcss"
-            apiKey="3df93446658cd9c4e314d4c02a052188"
-            appId="BH4D9OD16A"
+            indexName="laravelshopper"
+            apiKey="21cf916c9736654e6b38ccc8bd4c2f4d"
+            appId="JYDANWZCUM"
             navigator={{
               navigate({ suggestionUrl }) {
                 router.push(suggestionUrl)
