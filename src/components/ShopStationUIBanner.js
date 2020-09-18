@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from 'react'
 import clsx from 'clsx'
-import logo from '@/img/tailwind-ui-logo-on-dark.svg'
+import logo from '@/img/shopstation-logo-on-dark.svg'
 import { wait } from '@/utils/wait'
 import { loadImage } from '@/utils/loadImage'
 
-export function TuiBanner() {
+export function ShopStationUIBanner() {
   let ref = useRef()
   let [state, setState] = useState('waiting')
 
@@ -50,21 +50,22 @@ export function TuiBanner() {
       })}
     >
       <div className="max-w-screen-xl mx-auto px-2 sm:px-4">
-        <div className="p-2 rounded-lg bg-gray-900 shadow-lg sm:p-3">
+        <div className="p-2 rounded-lg bg-blue-900 shadow-lg sm:p-3">
           <div className="flex items-center justify-between flex-wrap">
             <div className="w-0 flex-1 flex items-center">
               <img className="h-6" src={logo} alt="" />
               <p className="ml-3 font-medium text-white truncate">
                 <span className="lg:hidden">
-                  <span className="sr-only">Tailwind UI</span> is now in early access!
+                  <span className="sr-only">ShopStation</span> is now in early access!
                 </span>
-                <span className="hidden lg:inline text-gray-400">
+                <span className="hidden lg:inline text-blue-400">
                   <strong className="text-white font-semibold mr-1">Now in early access!</strong>
                   <span className="xl:hidden">
-                    Beautiful UI components by the creators of Tailwind CSS.
+                    Beautiful UI components for e-commerce by the creators of Laravel Shopper.
                   </span>
                   <span className="hidden xl:inline">
-                    Beautiful UI components, crafted by the creators of Tailwind CSS.
+                    Beautiful UI components for e-commerce, crafted by the creators of Laravel
+                    Shopper.
                   </span>
                 </span>
               </p>
@@ -72,8 +73,8 @@ export function TuiBanner() {
             <div className="order-3 mt-2 flex-shrink-0 w-full sm:order-2 sm:mt-0 sm:w-auto">
               <div className="rounded-md shadow-sm">
                 <a
-                  href="https://tailwindui.com?utm_source=tailwindcss&utm_medium=footer-banner"
-                  className="flex items-center justify-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-gray-900 bg-white hover:text-gray-800 focus:outline-none focus:underline"
+                  href="https://shopstation.design?utm_source=laravelshopper&utm_medium=footer-banner"
+                  className="flex items-center justify-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-blue-600 bg-white hover:text-blue-500 focus:outline-none focus:underline"
                 >
                   Learn more
                 </a>
@@ -88,7 +89,7 @@ export function TuiBanner() {
                   setState('hidden')
                 }}
                 type="button"
-                className="-mr-1 flex p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-gray-800"
+                className="-mr-1 flex p-2 rounded-md hover:bg-blue-800 focus:outline-none focus:bg-blue-800"
                 aria-label="Hide banner"
               >
                 <svg

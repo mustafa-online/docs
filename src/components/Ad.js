@@ -1,6 +1,6 @@
 export function Ad() {
   return (
-    <div id="tailwind-ui-widget">
+    <div id="shopper-ads">
       <a
         href="https://squashr.io/?utm_source=laravelshopper&utm_medium=sidebar-widget"
         className="mt-3 block"

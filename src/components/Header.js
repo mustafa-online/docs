@@ -111,7 +111,7 @@ function HeaderInner({ navIsOpen, onNavToggle }) {
           <div className="flex justify-start items-center text-gray-500">
             <a
               className="flex items-center hover:text-gray-700 mr-5"
-              href="https://github.com/shopperlabs/framework"
+              href="https://github.com/shopperlabs"
             >
               <svg
                 className="fill-current w-5 h-5"

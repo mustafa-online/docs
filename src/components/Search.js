@@ -1,8 +1,9 @@
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import Mousetrap from 'mousetrap'
 import { DocSearchModal, useDocSearchKeyboardEvents } from '@docsearch/react'
 
 function Hit({ hit, children }) {
@@ -34,6 +35,13 @@ export function Search() {
     },
     [setIsOpen, setInitialQuery]
   )
+
+  useEffect(() => {
+    Mousetrap.bind('command+k', function (e) {
+      e.preventDefault()
+      setIsOpen(!isOpen)
+    })
+  }, [])
 
   useDocSearchKeyboardEvents({
     isOpen,
@@ -100,19 +108,30 @@ export function Search() {
         </svg>
       </div>
       <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-        <span className="text-gray-500 sm:text-sm sm:leading-5">
-          <kbd
-            className="border border-gray-300 mr-1 bg-gray-100 align-middle p-0 inline-flex justify-center items-center  text-xs text-center rounded group-hover:border-gray-300 transition duration-150 ease-in-out "
-            style={{ minWidth: '1.8em' }}
-          >
-            ⌘
-          </kbd>
-          <kbd
-            className="border border-gray-300 bg-gray-100 align-middle p-0 inline-flex justify-center items-center  text-xs text-center ml-auto mr-0 rounded group-hover:border-gray-300 transition duration-150 ease-in-out "
-            style={{ minWidth: '1.8em' }}
-          >
-            K
-          </kbd>
+        <span className="text-gray-500 sm:text-sm sm:leading-5 inline-flex items-center">
+          <span>
+            <kbd
+              className="border border-gray-300 mr-1 bg-gray-100 align-middle p-0 inline-flex justify-center items-center  text-xs text-center rounded group-hover:border-gray-300 transition duration-150 ease-in-out "
+              style={{ minWidth: '1.8em' }}
+            >
+              /
+            </kbd>
+          </span>
+          <span className="mx-1">or</span>
+          <span>
+            <kbd
+              className="border border-gray-300 mr-1 bg-gray-100 align-middle p-0 inline-flex justify-center items-center  text-xs text-center rounded group-hover:border-gray-300 transition duration-150 ease-in-out "
+              style={{ minWidth: '1.8em' }}
+            >
+              ⌘
+            </kbd>
+            <kbd
+              className="border border-gray-300 bg-gray-100 align-middle p-0 inline-flex justify-center items-center  text-xs text-center ml-auto mr-0 rounded group-hover:border-gray-300 transition duration-150 ease-in-out "
+              style={{ minWidth: '1.8em' }}
+            >
+              K
+            </kbd>
+          </span>
         </span>
       </div>
     </div>

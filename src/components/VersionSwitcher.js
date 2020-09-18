@@ -6,7 +6,7 @@ export function VersionSwitcher() {
   function submit(e) {
     e.preventDefault()
     if (selectRef.current.value === 'v0') {
-      window.location = 'https://github.com/mckenziarts/shopper'
+      window.location = 'https://github.com/shopperlabs/shopper'
     }
   }
 
