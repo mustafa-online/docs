@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import Mousetrap from 'mousetrap'
 import { DocSearchModal, useDocSearchKeyboardEvents } from '@docsearch/react'
 
 function Hit({ hit, children }) {
@@ -35,13 +34,6 @@ export function Search() {
     },
     [setIsOpen, setInitialQuery]
   )
-
-  useEffect(() => {
-    Mousetrap.bind('command+k', function (e) {
-      e.preventDefault()
-      setIsOpen(true)
-    })
-  })
 
   useDocSearchKeyboardEvents({
     isOpen,

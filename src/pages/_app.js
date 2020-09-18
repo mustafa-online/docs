@@ -28,6 +28,21 @@ export default function App({ Component, pageProps, router }) {
     function handleRouteChange() {
       setNavIsOpen(false)
     }
+
+    if (process.env.NODE_ENV === 'production') {
+      // Google Analytics
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'UA-177629796-1', {
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+        page_title: window.document.title,
+      })
+    }
+
     Router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
       Router.events.off('routeChangeComplete', handleRouteChange)
@@ -66,6 +81,7 @@ export default function App({ Component, pageProps, router }) {
           property="og:image"
           content={`https://docs.laravelshopper.io${twitterLargeCard}`}
         />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177629796-1"></script>
       </Head>
       <Header navIsOpen={navIsOpen} onNavToggle={(isOpen) => setNavIsOpen(isOpen)} />
       <Layout {...layoutProps}>
