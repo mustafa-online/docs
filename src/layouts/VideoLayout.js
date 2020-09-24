@@ -42,7 +42,7 @@ export function VideoLayout({ children, meta }) {
               <span>Source code</span>
             </a>
           </div>
-          <Link href={next && next.published !== false ? next.href : '/course/coming-soon'}>
+          <Link href={next && next.published !== false ? next.href : '/screencasts/coming-soon'}>
             <a className="inline-flex items-center text-gray-600 hover:text-gray-900">
               <span>
                 Next<span className="hidden sm:inline"> lesson</span>
@@ -59,17 +59,7 @@ export function VideoLayout({ children, meta }) {
           <h2>Tools used</h2>
           <ul>
             <li>
-              <a href="https://code.visualstudio.com/">VS Code</a> as the editor
-            </li>
-            <li>
-              <a href="https://adamwathan.me/sizzy">Sizzy</a> for the browser preview on the
-              right-hand side
-            </li>
-            <li>
-              <a href="https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss">
-                Tailwind CSS Intellisense
-              </a>{' '}
-              for intelligent auto-completion in VS Code
+              <a href="https://code.visualstudio.com/">IntelliJ</a> as the editor
             </li>
           </ul>
         </div>

@@ -9,14 +9,7 @@ const pages = createPageList(
 )
 
 const nav = {
-  Examples: [
-    pages['alerts'],
-    pages['buttons'],
-    pages['cards'],
-    pages['forms'],
-    pages['flexbox-grids'],
-    pages['navigation'],
-  ],
+  Examples: [],
 }
 
 export function ComponentsLayout(props) {

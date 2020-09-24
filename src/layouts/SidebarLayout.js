@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { VersionSwitcher } from '@/components/VersionSwitcher'
 import { createContext, forwardRef, useRef } from 'react'
-import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect'
 import clsx from 'clsx'
 
 export const SidebarContext = createContext()
@@ -36,15 +35,6 @@ function Nav({ nav, children, fallbackHref }) {
   const router = useRouter()
   const activeItemRef = useRef()
   const scrollRef = useRef()
-
-  useIsomorphicLayoutEffect(() => {
-    if (activeItemRef.current) {
-      const scrollRect = scrollRef.current.getBoundingClientRect()
-      const activeItemRect = activeItemRef.current.getBoundingClientRect()
-      scrollRef.current.scrollTop =
-        activeItemRect.top - scrollRect.top - scrollRect.height / 2 + activeItemRect.height / 2
-    }
-  }, [])
 
   return (
     <nav
