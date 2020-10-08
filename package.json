@@ -34,7 +34,7 @@
     "gzip-size": "^5.1.1",
     "minimatch": "^3.0.4",
     "mousetrap": "^1.6.5",
-    "next": "^9.5.1",
+    "next": "^9.5.4",
     "postcss-nested": "^4.2.3",
     "prismjs": "^1.21.0",
     "react": "16.13.1",
