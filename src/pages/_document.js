@@ -8,7 +8,7 @@ export default class Document extends NextDocument {
 
   componentDidMount() {
     window.docsearch({
-      apiKey: '6ac184d35b3a04722d3b0845f50d9003',
+      apiKey: 'c0df4070cb894e127411995f8e688d95',
       indexName: 'laravelshopper',
       inputSelector: '#docsearch-input',
       debug: true // Set debug to true if you want to inspect the dropdown
