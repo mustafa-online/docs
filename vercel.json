@@ -1,7 +1,7 @@
 {
   "redirects": [
     { "source": "/docs", "destination": "/docs/installation", "permanent": false },
-    { "source": "/discord", "destination": "https://discord.gg/AqWpFVR", "permanent": false },
+    { "source": "/discord", "destination": "https://discord.gg/vXKBTdKRxc", "permanent": false },
     {
       "source": "/forum",
       "destination": "https://laravelshopper.io/discussions",

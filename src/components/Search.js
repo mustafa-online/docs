@@ -66,8 +66,8 @@ export function Search() {
             }}
             onClose={onClose}
             indexName="laravelshopper"
-            apiKey="21cf916c9736654e6b38ccc8bd4c2f4d"
-            appId="JYDANWZCUM"
+            apiKey="6ac184d35b3a04722d3b0845f50d9003"
+            appId="BH4D9OD16A"
             navigator={{
               navigate({ suggestionUrl }) {
                 router.push(suggestionUrl)
