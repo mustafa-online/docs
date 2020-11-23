@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import Link from 'next/link'
 import Head from 'next/head'
@@ -66,10 +66,11 @@ export function Search() {
             }}
             onClose={onClose}
             indexName="laravelshopper"
-            apiKey="6ac184d35b3a04722d3b0845f50d9003"
+            apiKey="9748bc4e11fc78e9235b915f5bbd7907"
             appId="BH4D9OD16A"
             navigator={{
               navigate({ suggestionUrl }) {
+                setIsOpen(false)
                 router.push(suggestionUrl)
               },
             }}
