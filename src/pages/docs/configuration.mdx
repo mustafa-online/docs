@@ -5,39 +5,17 @@ description: A guide to configuring and customizing your Shopper installation.
 
 import { Info } from '@/components/Alert'
 
-With the installation of Shopper you will find new configurations files located at `config/shopper.php`, `config/ttwiter.php`, `config/scout.php`, `config/currencyConverter.php`, `config/laravellocalization.php` and `config/cartalyst.sentinel.php`.  
+With the installation of Shopper you will find new configurations files located at the shopper folder under config folder `shopper/auth.php`, `shopper/routes.php`, and `shopper/system.php`.  
 
-And the `shopper.php` file is main for platform, you can find various options to change the configuration of your Shopper installation.
+And the `system.php` file is main for platform, you can find various options to change the configuration of your Shopper installation.
 
 <Info message="If you cache your configuration files please make sure to run `php artisan config:clear` after you changed something" />
 
-**Laravel Scout**
+## System
 
-It is important to mention that Shopper works with Laravel Scout, by default Algolia is used. Full documentation of Laravel scout [here](https://laravel.com/docs/5.8/scout)
+All the basic configurations for using shopper can be found in this file. The management of the locale, the models to use and additional resources (scripts and styles) to the administration.
 
-## Dashboard prefix
-
-```php
-<?php
-
-'prefix' => env('DASHBOARD_PREFIX', 'console'),
-```
-
-The system installed on the website can be easily defined by the dashboard prefix, for example it is `wp-admin` for WordPress, and it gives an opportunity to automatically search for old vulnerable versions of software and gain control over it.
-
-There are other reasons but we won't speak of them in this section. The point is that Shopper allows to change dashboard prefix to every other name, `admin` or `administrator` for example.
-
-## Currency
-
-```php
-<?php
-
-'currency'  => env('CURRENCY_SYMBOL', 'XAF'),
-```
-
-This value of the default currency for your store. It is the default value set in the database `shopper_settings` table.
-
-## Additional resources
+**Additional resources**
 
 ```php
 <?php
@@ -54,87 +32,43 @@ This value of the default currency for your store. It is the default value set i
 
 During your work you may need to add your own style tables or javascript scenarios globally for all the pages, so you need to add them to relevant arrays.
 
-## Middlewares
+
+## Routes
+
+The configuration of the routes allows you to specify a prefix to access your dashboard, the addition of middleware and the configuration file to add more routes to your administration.
+
+**Dashboard prefix**
 
 ```php
 <?php
 
-'middleware' => [
-    'public'  => ['public', 'web', 'localizationRedirect'],
-    'private' => ['web', 'dashboard', 'localizationRedirect'],
-],
+'prefix' => env('SHOPPER_DASHBOARD_PREFIX', 'shopper'),
 ```
 
-You may add or delete middlewares of graphical interface. At the moment there is two types of middlewares: `public`, that unauthorized user may access to, for example, it may be Login page or Password recovery, and `private` that may be accessed only by authorized users.
+The system installed on the website can be easily defined by the dashboard prefix, for example it is `wp-admin` for WordPress, and it gives an opportunity to automatically search for old vulnerable versions of software and gain control over it.
 
-You may add as much new middlewares as you want, as example the middleware for IP whitelist filtration.
+There are other reasons but we won't speak of them in this section. The point is that Shopper allows to change dashboard prefix to every other name, `admin` or `administrator` for example.
 
-## Storage
+**Middleware**
 
 ```php
 <?php
 
-'storage' => [
-
-    'disk' => ['local'],
-
-    'uploads' => [
-        'folder' => 'uploads',
-        'path'   => storage_path('app/uploads'),
-    ],
-
-    'media' => [
-        'folder' => 'media',
-        'path'   => storage_path('app/media'),
-    ],
-
-],
+'middleware' => [],
 ```
 
-Shopper provide 2 folders for storage. The `uploads` folder contain all public and protected files that uploaded by administration forms \(products, categories, brands and users images\). The second folder `media` is for the `filemanager`. You nedd to create this folder in the Media Menu on Shopper admin dashboard.
+Shopper gives you the ability to add middleware to all of your routes. These middlewares will be applied to all the routes of your administration.
 
-## Social API Post
+
+**Additional dashboard routes**
 
 ```php
 <?php
-/*
-|--------------------------------------------------------------------------
-| Twitter API key
-|--------------------------------------------------------------------------
-|
-*/
-'twitter' => [
-    'consurmer_key' => env('TWITTER_CONSUMER_KEY', ''),
-    'consurmer_secret' => env('TWITTER_CONSUMER_SECRET', ''),
-    'access_token' => env('TWITTER_ACCESS_TOKEN', ''),
-    'access_token_secret' => env('TWITTER_ACCESS_TOKEN_SECRET', '')
-],
 
-/*
-|--------------------------------------------------------------------------
-| Facebook API key
-|--------------------------------------------------------------------------
-|
-*/
-'facebook' => [
-    'app_id' => env('FACEBOOK_APP_ID', ''),
-    'app_secret' => env('FACEBOOK_APP_SECRET', ''),
-    'default_graph_version' => env('FACEBOOK_DEFAULT_GRAPH_VERSION', ''),
-    'page_access_token' => env('FACEBOOK_PAGE_ACCESS_TOKEN', '')
-],
-...
+// Eg.: base_path('routes/shopper.php')
 
+
+'custom_file' => null,
 ```
 
-Twitter and Facebook setting is for manage social post on Facebook Page and/or Twitter account.
-
-## Others config
-
-Shopper has many other configurations files as we said. Shopper come with
-
-* [Scout Extended](https://github.com/algolia/scout-extended): To provide admin product, category, brand and user research
-* [Laravel Localization](https://github.com/mcamara/laravel-localization): To make dashboard localization
-* [Sentinel](https://github.com/cartalyst/sentinel): the auth provider of Laravel Shopper admin
-* [Laravel Cconverter](https://github.com/danielme85/laravel-cconverter): to provide money format and money convertion
-* [thujohn/twitter](https://github.com/thujohn/twitter): to easily manage Twitter API
-
+By default none of your routes in the `web.php` file will be accessible and loaded in the shopper administration. So that your routes added in the sidebar can have the middleware applied to the dashboard, you must fill in an additional routing file and this will be automatically loaded by Shopper's internal RouteServiceProvider

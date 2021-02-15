@@ -21,87 +21,12 @@ These changes affect all users, whether you are using Shopper.
 To update to the latest version inside of your composer.json file make sure to update the version of Shopper inside the require declaration inside of your composer.json to:
 
 ```bash
-"mckenziearts/shopper": "1.1.*"
+"shopper/framework": "2.*"
 ```
 
 <Heading level={3}>2. Update your config file</Heading>
 
 <p className="italic font-normal text-gray-600 mt-4">Impact: All users, Effort: Moderate</p>
-
-The `shopper.php` configuration file has had a few changes.
-
-the settings
-
-```php
-<?php
-/*
-|--------------------------------------------------------------------------
-| Twitter API key
-|--------------------------------------------------------------------------
-|
-*/
-'twitter' => [
-    'consurmer_key' => env('TWITTER_CONSUMER_KEY', ''),
-    'consurmer_secret' => env('TWITTER_CONSUMER_SECRET', ''),
-    'access_token' => env('TWITTER_ACCESS_TOKEN', ''),
-    'access_token_secret' => env('TWITTER_ACCESS_TOKEN_SECRET', '')
-],
-
-/*
-|--------------------------------------------------------------------------
-| Facebook API key
-|--------------------------------------------------------------------------
-|
-*/
-'facebook' => [
-    'app_id' => env('FACEBOOK_APP_ID', ''),
-    'app_secret' => env('FACEBOOK_APP_SECRET', ''),
-    'default_graph_version' => env('FACEBOOK_DEFAULT_GRAPH_VERSION', ''),
-    'page_access_token' => env('FACEBOOK_PAGE_ACCESS_TOKEN', '')
-],
-...
-
-```
-
-was added. This allows you to post to your Twitter account and Facebook page using Shopper core code.
-
-See the new [default config file](https://github.com/shopperlabs/shopper/blob/master/config/shopper.php) for a complete example.
-
-Your config file should look generally like this at this point:
-
-```diff
-
-   'skeletons' => [
-     ...
-   ],  
-
-+  /*
-+  |--------------------------------------------------------------------------
-+  | Twitter API key
-+  |--------------------------------------------------------------------------
-+  |
-+  */
-+  'twitter' => [
-+      'consurmer_key' => env('TWITTER_CONSUMER_KEY', ''),
-+      'consurmer_secret' => env('TWITTER_CONSUMER_SECRET', ''),
-+      'access_token' => env('TWITTER_ACCESS_TOKEN', ''),
-+      'access_token_secret' => env('TWITTER_ACCESS_TOKEN_SECRET', '')
-+  ],
-+
-+  /*
-+  |--------------------------------------------------------------------------
-+  | Facebook API key
-+  |--------------------------------------------------------------------------
-+  |
-+  */
-+  'facebook' => [
-+      'app_id' => env('FACEBOOK_APP_ID', ''),
-+      'app_secret' => env('FACEBOOK_APP_SECRET', ''),
-+      'default_graph_version' => env('FACEBOOK_DEFAULT_GRAPH_VERSION', ''),
-+      'page_access_token' => env('FACEBOOK_PAGE_ACCESS_TOKEN', '')
-+  ],
-
-```
 
 ### Troubleshooting
 

@@ -4,14 +4,13 @@ description: Quick start guide for installing and configuring Laravel Shopper.
 ---
 
 import { Heading } from '@/components/Heading'
-import { Warning } from '@/components/Alert'
 
 ## <Heading number="1">Install Shopper via composer</Heading>
 
-Shopper is realy easy to install. After creating your new Laravel application \(5.6+\) you can include the Shopper package with the following command:
+Shopper is realy easy to install. After creating your new Laravel application \(7+\) you can include the Shopper package with the following command:
 
 ```bash
-composer require mckenziearts/shopper
+composer require shopper/framework
 ```
 
 ## <Heading number="2">Write Env Variables</Heading>
@@ -36,10 +35,6 @@ php artisan shopper:install
 
 This will install shopper, publish vendor files, create shopper and storage symlinks if they don't exist in the public folder, run migrations and seeders classes.
 
-<p className="font-bold text-red-700 px-4 py-2 bg-red-100 rounded">Specified key was too long error...</p>  
-
-<Warning message="If you see this error message you have an outdated version of MySQL, use the following solution" link="https://laravel-news.com/laravel-5-4-key-too-long-error" linkMessage="Laravel 5.4 Key too long error" />
-
 
 And we're all good to go!
 
@@ -61,21 +56,17 @@ And you will be prompted for the users username, firstname, lastname and passwor
 If you want to publish again Shopper's vendor files run these commands:
 
 ```bash
-php artisan vendor:publish --provider="Mckenziearts\Shopper\ShopperServiceProvider"
-
-// or 
-
-php artisan vendor:publish --all
+php artisan shopper:publish
 ```
 
 ## <Heading number="5">Update Existing Files</Heading>
 
-Extend your current User Model \(usually `app/User.php`\) using the `Mckenziearts\Shopper\Plugins\Users\Models\User as ShopperUser` alias:
+Extend your current User Model \(usually `app/User.php`\) using the `Shopper\Framework\Models\User\User as ShopperUser` alias:
 
 ```php
 <?php
 
-use Mckenziearts\Shopper\Plugins\Users\Models\User as ShopperUser; 
+use Shopper\Framework\Models\User\User as ShopperUser; 
 
 class User extends ShopperUser
 {
