@@ -82,13 +82,15 @@ export default function App({ Component, pageProps, router }) {
           content={`https://docs.laravelshopper.io${twitterLargeCard}`}
         />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0F6T5FGY0"></script>
-        <script>
+        <script dangerouslySetInnerHTML={{ __html: `
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
+          function gtag(){
+            dataLayer.push(arguments)
+          }
           gtag('js', new Date());
 
           gtag('config', 'G-Y0F6T5FGY0');
-        </script>
+        ` }} />
       </Head>
       <Header navIsOpen={navIsOpen} onNavToggle={(isOpen) => setNavIsOpen(isOpen)} />
       <Layout {...layoutProps}>
