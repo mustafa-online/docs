@@ -12,15 +12,14 @@ const pages = createPageList(
 
 const nav = {
   Prologue: [
-    // pages['release-notes'],
+    pages['release-notes'],
     // pages['upcoming-changes'],
     pages['contribution-guide'],
-    // pages['roadmap'],
-    pages['upgrade'],
-    // pages['upgrading-to-v2'],
+    pages['roadmap'],
+    // pages['upgrade'],
   ],
   'Getting started': [pages['requirements'], pages['installation'], pages['configuration']],
-  'Core Concepts': [pages['settings'], pages['helper-methods']],
+  'Core Concepts': [pages['helper-methods']],
 }
 
 export function DocumentationLayout(props) {

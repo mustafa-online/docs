@@ -24,25 +24,32 @@ function HeaderInner({ navIsOpen, onNavToggle }) {
         <div className="flex items-center">
           <Link href="/">
             <a className="flex items-center lg:mr-4">
-              <svg
-                className="w-auto h-10"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 108 270.1"
-              >
-                <path fill="#1a56db" d="M0 125v42l36 20v-83z" />
-                <path fill="#1c64f2" d="M0 125l36-21V63L0 42z" />
-                <path fill="#1a56db" d="M72 166v42l36 20v-83z" />
-                <path fill="#1a56db" d="M72 207.5l36-21v-41l-36-21z" />
-                <path fill="#1c64f2" d="M36 145v42l72-42-36-20z" />
-                <path fill="#1c64f2" d="M72 125l36 20v-41z" />
-                <path fill="#76a9fa" d="M72 42l36 21V21zM36 228.5l-36 21v-42z" />
-                <path fill="#a4cafe" d="M72 125l36-21-36-21z" />
-                <path fill="#c3ddfd" d="M36 104l36 21V83z" />
-                <path fill="#1c64f2" d="M72 0v42l36-21z" />
-                <path fill="#1a56db" d="M72 0L36 21 0 42l36 21 36-21zM36 270.1v-42l-36 21z" />
-                <path fill="#1c64f2" d="M36 270.1l36-21 36-21-36-21-36 21z" />
-                <path fill="#e1effe" d="M36 104l36 21-36 20z" />
+              <svg className="w-auto h-8" viewBox="0 0 120 145" width="120" xmlns="http://www.w3.org/2000/svg">
+                <radialGradient id="a" cx="105" cy="40" gradientUnits="userSpaceOnUse" r="135">
+                    <stop offset="0" stop-color="#60a5fa"/>
+                    <stop offset="1" stop-color="#2563eb"/>
+                </radialGradient>
+                <path fill="url(#a)" d="M10 35h100v110h-100z"/>
+                <linearGradient id="b" gradientUnits="userSpaceOnUse" x1="80" x2="120" y1="100" y2="60">
+                    <stop offset="0" stop-color="#dbeafe"/>
+                    <stop offset="1" stop-color="#93c5fd"/>
+                </linearGradient>
+                <path fill="url(#b)" d="M120 90l-40 10v-30l40-10z"/>
+                <linearGradient id="c" gradientUnits="userSpaceOnUse" x2="40" y1="135" y2="95">
+                    <stop offset="0" stop-color="#93c5fd"/>
+                    <stop offset="1" stop-color="#dbeafe"/>
+                </linearGradient>
+                <path fill="url(#c)" d="M40 125l-40 10v-30l40-10z"/>
+                <linearGradient id="d" gradientUnits="userSpaceOnUse" x1="25" x2="95" y1="52.5" y2="52.5">
+                    <stop offset="0" stop-color="#1e40af"/>
+                    <stop offset="1" stop-color="#3b82f6"/>
+                </linearGradient>
+                <path fill="url(#d)" d="M60 60c-13.8 0-25-11.2-25-25h-10c0 19.3 15.7 35 35 35s35-15.7 35-35h-10c0 13.8-11.2 25-25 25z"/>
+                <linearGradient id="e" gradientUnits="userSpaceOnUse" x1="25" x2="95" y1="17.5" y2="17.5">
+                    <stop offset="0" stop-color="#3b82f6"/>
+                    <stop offset="1" stop-color="#1e40af"/>
+                </linearGradient>
+                <path fill="url(#e)" d="M60 10c13.8 0 25 11.2 25 25h10c0-19.3-15.7-35-35-35s-35 15.7-35 35h10c0-13.8 11.2-25 25-25z"/>
               </svg>
               <span className="hidden md:block font-medium text-base text-gray-900 ml-4">
                 Documentation
@@ -95,8 +102,8 @@ function HeaderInner({ navIsOpen, onNavToggle }) {
             <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
           </svg>
         </button>
-        <div className="hidden lg:flex lg:items-center lg:justify-between xl:w-1/4 px-6">
-          <div className="relative mr-4">
+        <div className="hidden lg:flex lg:items-center lg:justify-end xl:w-1/4 px-6">
+          {/* <div className="relative mr-4">
             <VersionSwitcher />
             <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
               <svg
@@ -107,7 +114,7 @@ function HeaderInner({ navIsOpen, onNavToggle }) {
                 <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
               </svg>
             </div>
-          </div>
+          </div> */}
           <div className="flex justify-start items-center text-gray-500">
             <a
               className="flex items-center hover:text-gray-700 mr-5"
@@ -135,7 +142,7 @@ function HeaderInner({ navIsOpen, onNavToggle }) {
                 <path d="M6.29 18.25c7.55 0 11.67-6.25 11.67-11.67v-.53c.8-.59 1.49-1.3 2.04-2.13-.75.33-1.54.55-2.36.65a4.12 4.12 0 0 0 1.8-2.27c-.8.48-1.68.81-2.6 1a4.1 4.1 0 0 0-7 3.74 11.65 11.65 0 0 1-8.45-4.3 4.1 4.1 0 0 0 1.27 5.49C2.01 8.2 1.37 8.03.8 7.7v.05a4.1 4.1 0 0 0 3.3 4.03 4.1 4.1 0 0 1-1.86.07 4.1 4.1 0 0 0 3.83 2.85A8.23 8.23 0 0 1 0 16.4a11.62 11.62 0 0 0 6.29 1.84" />
               </svg>
             </a>
-            <a className="flex items-center hover:text-gray-700" href="https://discord.gg/AqWpFVR">
+            <a className="flex items-center hover:text-gray-700" href="https://discord.gg/vXKBTdKRxc">
               <svg
                 className="fill-current w-5 h-5"
                 xmlns="http://www.w3.org/2000/svg"
