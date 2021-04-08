@@ -2,7 +2,7 @@ export function PageHeader({ title, description, badge = {}, border = true }) {
   if (!title && !description) return null
 
   return (
-    <div className="markdown mb-6 px-6 max-w-3xl mx-auto lg:ml-0 lg:mr-auto xl:mx-0 xl:px-12 xl:w-3/4">
+    <div className="prose mb-6 px-6 max-w-3xl mx-auto lg:ml-0 lg:mr-auto xl:mx-0 xl:px-12 xl:w-3/4">
       <div className="flex items-center markdown">
         <h1>{title}</h1>
         {badge.key && badge.value && (

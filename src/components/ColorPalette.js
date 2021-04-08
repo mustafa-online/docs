@@ -53,7 +53,7 @@ export function ColorPalette({ colors }) {
                 'mt-4': i !== 0,
               })}
             >
-              <h3 className="markdown no-toc mb-4 mt-8">{title}</h3>
+              <h3 className="prose no-toc mb-4 mt-8">{title}</h3>
               <div className="-mx-2 -mt-5 flex flex-wrap">
                 {palette.map((variant, j) => (
                   <div key={j} className="w-1/2 md:w-1/3 px-2">

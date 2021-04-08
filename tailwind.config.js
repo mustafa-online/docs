@@ -68,19 +68,19 @@ module.exports = {
         90: '90',
         100: '100',
       },
-    },
-    typography: (theme) => ({
-      default: {
-        css: {
-          a: {
-            color: theme('colors.blue.600'),
-            '&:hover': {
-              color: theme('colors.blue.400'),
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            a: {
+              color: theme('colors.blue.600'),
+              '&:hover': {
+                color: theme('colors.blue.400'),
+              },
             },
           },
         },
-      },
-    }),
+      }),
+    },
   },
   variants: {},
   plugins: [require('@tailwindcss/typography')],
