@@ -12,7 +12,7 @@ export function PageHeader({ title, description, badge = {}, border = true }) {
           </dl>
         )}
       </div>
-      {description && <p className="mt-0 mb-4 text-gray-600">{description}</p>}
+      {description && <p className="my-4 text-gray-600">{description}</p>}
       {border && <hr className="my-8 border-b-2 border-gray-200" />}
     </div>
   )

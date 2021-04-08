@@ -226,36 +226,35 @@ function TopLevelNav() {
         Community
       </TopLevelLink>
       <TopLevelLink
-        href="/team"
-        isActive={current === 'team'}
+        href="/extending"
+        isActive={current === 'extending'}
         className="mt-3 lg:mt-1"
         icon={
           <>
-            <path
-              d="M12 4.354a4 4 0 1 1 0 5.292M15 21H3v-1a6 6 0 1 1 12 0v1zm0 0h6v-1a6 6 0 0 0-9-5.197M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"
-              stroke="url(#1-team)"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+            <path d="M4 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5z" stroke="url(#paint_linear)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M4 13a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6z" stroke="url(#paint_linear_2)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M16 13a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-6z" stroke="url(#paint_linear_3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             <defs>
-              <linearGradient
-                id="1-team"
-                x1="4.926"
-                y1="12"
-                x2="16.704"
-                y2="12"
-                gradientUnits="userSpaceOnUse"
-              >
-                <stop stopColor="#6875F5" />
-                <stop offset=".513" stopColor="#3F83F8" />
-                <stop offset="1" stopColor="#1A56DB" />
+              <linearGradient id="paint_linear" x1="5.822" y1="8.134" x2="17.662" y2="9.365" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#6875F5"/>
+                <stop offset=".534" stopColor="#3F83F8"/>
+                <stop offset="1" stopColor="#1A56DB"/>
+              </linearGradient>
+              <linearGradient id="paint_linear_2" x1="5.822" y1="8.134" x2="17.662" y2="9.365" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#6875F5"/>
+                <stop offset=".534" stopColor="#3F83F8"/>
+                <stop offset="1" stopColor="#1A56DB"/>
+              </linearGradient>
+              <linearGradient id="paint_linear_3" x1="5.822" y1="8.134" x2="17.662" y2="9.365" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#6875F5"/>
+                <stop offset=".534" stopColor="#3F83F8"/>
+                <stop offset="1" stopColor="#1A56DB"/>
               </linearGradient>
             </defs>
           </>
         }
       >
-        Team
+        Extending Shopper
       </TopLevelLink>
       <TopLevelLink
         href="/sponsors"

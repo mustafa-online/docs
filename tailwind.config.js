@@ -1,6 +1,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
+  darkMode: false,
   purge: ['./src/**/*.{js,mdx}'],
   important: true,
   theme: {
@@ -26,6 +28,7 @@ module.exports = {
           blue: 'var(--color-code-blue)',
           white: 'var(--color-code-white)',
         },
+        teal: colors.teal,
         'green-150': '#e6ffee',
       },
       spacing: {
@@ -79,12 +82,6 @@ module.exports = {
       },
     }),
   },
-  variants: {
-    backgroundColor: ['responsive', 'odd', 'even', 'hover', 'focus'],
-    borderColor: ['responsive', 'hover', 'focus'],
-    borderWidth: ['responsive', 'first', 'last', 'hover', 'focus'],
-    textColor: ['responsive', 'group-focus', 'group-hover', 'hover', 'focus'],
-    translate: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
-  },
-  plugins: [require('@tailwindcss/ui'), require('@tailwindcss/typography')],
+  variants: {},
+  plugins: [require('@tailwindcss/typography')],
 }
