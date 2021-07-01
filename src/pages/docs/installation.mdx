@@ -7,7 +7,7 @@ import { Heading } from '@/components/Heading'
 
 ## <Heading number="1">Install Shopper via composer</Heading>
 
-Shopper is realy easy to install. After creating your new Laravel application \(7+\) you can include the Shopper package with the following command:
+Shopper is realy easy to install. After creating your new Laravel application \(8+\) you can include the Shopper package with the following command:
 
 ```bash
 composer require shopper/framework
@@ -61,14 +61,14 @@ php artisan shopper:publish
 
 ## <Heading number="5">Update Existing Files</Heading>
 
-Extend your current User Model \(usually `app/User.php`\) using the `Shopper\Framework\Models\User\User as ShopperUser` alias:
+Extend your current User Model \(usually `app/Models/User.php`\) using the `Shopper\Framework\Models\User\User as Authenticatable` alias:
 
 ```php
 <?php
 
-use Shopper\Framework\Models\User\User as ShopperUser; 
+use Shopper\Framework\Models\User\User as Authenticatable; 
 
-class User extends ShopperUser
+class User extends Authenticatable
 {
     // ...
 }
@@ -81,11 +81,11 @@ After that, run `composer dump-autoload` to finish your installation!
 To view Shopper's dashboard go to:
 
 ```bash
-http://localhost:8000/console
+http://localhost:8000/shopper
 ```
 
 If your are using Laravel Valet you can easily access with your project name with `.test` at the end when you navigate on you project.
 
 ```bash
-http://laravelshopper.test/console
+http://laravelshopper.test/shopper
 ```

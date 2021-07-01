@@ -5,7 +5,7 @@ description: A guide to configuring and customizing your Shopper installation.
 
 import { Info } from '@/components/Alert'
 
-With the installation of Shopper you will find new configurations files located at the shopper folder under config folder `shopper/auth.php`, `shopper/routes.php`, and `shopper/system.php`.  
+With the installation of Shopper you will find new configurations files located at the `shopper` folder under laravel config folder `auth.php`, `mails.php`, `routes.php`, and `system.php`.  
 
 And the `system.php` file is main for platform, you can find various options to change the configuration of your Shopper installation.
 
@@ -13,12 +13,95 @@ And the `system.php` file is main for platform, you can find various options to 
 
 ## System
 
-All the basic configurations for using shopper can be found in this file. The management of the locale, the models to use and additional resources (scripts and styles) to the administration.
+All the basic configurations for using shopper can be found in this file. The management of the locale, the models to use and additional resources (scripts and styles) to the administration. All these configuration can be find in the `config/shopper/system.php` file.
+
+**Controllers**
+
+By default Shopper loads controllers that are defined in this namespace. You can change it if you have a different structure. These controllers are used to extend and add functionality in the administration
+
+In your config file you have the controllers key that define the controller's namespace for your extended Controllers:
+
+```php
+
+    /*
+    |--------------------------------------------------------------------------
+    | Shopper Controllers config
+    |--------------------------------------------------------------------------
+    |
+    | If you want extends your shopper admin panel with great features,
+    | Here you can specify custom Controller Namespace and Shopper
+    | RouteServiceProvider will load all your controllers.
+    |
+    */
+
+    'controllers' => [
+
+        'namespace' => 'App\\Http\\Controllers\\Shopper',
+
+    ],
+
+
+```
+
+**Models**
+
+By default the models used are defined in the models key, if you want to use your own models you can replace them here.
+
+```php
+
+    'models' => [
+
+        /**
+         * Eloquent model should be used to retrieve your brands. Of course,
+         * it is often just the "Brand" model but you may use whatever you like.
+         *
+         * The model you want to use as a Brand model needs to extends the
+         * `\Shopper\Framework\Models\Shop\Product\Brand` model.
+         */
+
+        'brand' => \Shopper\Framework\Models\Shop\Product\Brand::class,
+
+        /**
+         * Eloquent model should be used to retrieve your categories. Of course,
+         * it is often just the "Category" model but you may use whatever you like.
+         *
+         * The model you want to use as a Category model needs to extends the
+         * `\Shopper\Framework\Models\Shop\Product\Category` model.
+         */
+
+        'category'  => \Shopper\Framework\Models\Shop\Product\Category::class,
+
+        /**
+         * Eloquent model should be used to retrieve your collections. Of course,
+         * it is often just the "Collection" model but you may use whatever you like.
+         *
+         * The model you want to use as a Collection model needs to extends the
+         * `\Shopper\Framework\Models\Shop\Product\Collection` model.
+         */
+
+        'collection'  => \Shopper\Framework\Models\Shop\Product\Collection::class,
+
+        /**
+         * Eloquent model should be used to retrieve your products. Of course,
+         * it is often just the "Product" model but you may use whatever you like.
+         *
+         * The model you want to use as a Product model needs to extends the
+         * `\Shopper\Framework\Models\Shop\Product\Product` model.
+         */
+
+        'product'  => \Shopper\Framework\Models\Shop\Product\Product::class,
+
+    ],
+
+```
+
 
 **Additional resources**
 
 ```php
+
 <?php
+
 
 'resources' => [
     'stylesheets' => [
@@ -28,6 +111,7 @@ All the basic configurations for using shopper can be found in this file. The ma
         //'js/custom.css',
     ],
 ],
+
 ```
 
 During your work you may need to add your own style tables or javascript scenarios globally for all the pages, so you need to add them to relevant arrays.
@@ -40,9 +124,11 @@ The configuration of the routes allows you to specify a prefix to access your da
 **Dashboard prefix**
 
 ```php
+
 <?php
 
 'prefix' => env('SHOPPER_DASHBOARD_PREFIX', 'shopper'),
+
 ```
 
 The system installed on the website can be easily defined by the dashboard prefix, for example it is `wp-admin` for WordPress, and it gives an opportunity to automatically search for old vulnerable versions of software and gain control over it.
@@ -52,9 +138,11 @@ There are other reasons but we won't speak of them in this section. The point is
 **Middleware**
 
 ```php
+
 <?php
 
 'middleware' => [],
+
 ```
 
 Shopper gives you the ability to add middleware to all of your routes. These middlewares will be applied to all the routes of your administration.
@@ -63,12 +151,58 @@ Shopper gives you the ability to add middleware to all of your routes. These mid
 **Additional dashboard routes**
 
 ```php
+
 <?php
 
 // Eg.: base_path('routes/shopper.php')
 
-
 'custom_file' => null,
+
 ```
 
 By default none of your routes in the `web.php` file will be accessible and loaded in the shopper administration. So that your routes added in the sidebar can have the middleware applied to the dashboard, you must fill in an additional routing file and this will be automatically loaded by Shopper's internal RouteServiceProvider
+
+
+## Update Configurations
+
+In your `config/filesystems.php` config file add the following to the disks section:
+
+```php
+
+'disks' => [
+    ...
+
+    /** Shopper Files Uploads. */
+    'avatars' => [
+        'driver' => 'local',
+        'root' => storage_path('app/avatars'),
+        'url' => env('APP_URL').'/avatars',
+        'visibility' => 'public',
+    ],
+
+    'uploads' => [
+        'driver' => 'local',
+        'root' => storage_path('app/uploads'),
+        'url' => env('APP_URL').'/uploads',
+        'visibility' => 'public',
+    ],
+
+],
+
+```
+
+**Create New Folders**
+
+After adding the 2 entries in the filesystem config file, you must create them and add them to the .gitignore file.
+In your storage directory create 2 new folders called `avatars` and `uploads`.
+
+```shell
+mkdir storage/avatars && mkdir storage/uploads
+```
+
+In each new folder that you have created (avatars and uploads) you must create a .gitignore file which will contain the following line
+
+```shell
+!.gitignore
+```
+

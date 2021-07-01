@@ -18,8 +18,30 @@ const nav = {
     pages['roadmap'],
     // pages['upgrade'],
   ],
-  'Getting started': [pages['requirements'], pages['installation'], pages['configuration']],
-  'Core Concepts': [pages['helper-methods']],
+  'Getting started': [
+    pages['requirements'],
+    pages['installation'],
+    pages['configuration']
+  ],
+  'Concepts': [
+    pages['channels'],
+    pages['locations'],
+    pages['roles-permissions'],
+    pages['two-factor'],
+    pages['store-setting'],
+  ],
+  'Admin Panel': [
+    pages['brands'],
+    pages['categories'],
+    pages['collections'],
+    pages['attributes'],
+    pages['products'],
+    pages['variants'],
+    pages['orders'],
+    pages['cart'],
+    pages['customers'],
+    pages['reviews'],
+  ],
 }
 
 export function DocumentationLayout(props) {
