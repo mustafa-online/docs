@@ -29,6 +29,7 @@ const nav = {
     pages['roles-permissions'],
     pages['two-factor'],
     pages['store-setting'],
+    pages['legal'],
   ],
   'Admin Panel': [
     pages['brands'],
@@ -39,6 +40,7 @@ const nav = {
     pages['variants'],
     pages['orders'],
     pages['cart'],
+    pages['discounts'],
     pages['customers'],
     pages['reviews'],
   ],

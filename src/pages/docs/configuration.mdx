@@ -163,16 +163,21 @@ Shopper gives you the ability to add middleware to all of your routes. These mid
 By default none of your routes in the `web.php` file will be accessible and loaded in the shopper administration. So that your routes added in the sidebar can have the middleware applied to the dashboard, you must fill in an additional routing file and this will be automatically loaded by Shopper's internal RouteServiceProvider
 
 
+### Mapbox
+
+Shopper uses Mapbox to enter the geographic coordinates (latitude and longitude) of your store so that you can easily tell your customers your location.
+The mapbox component to use is that of [Blade UI Kit](https://blade-ui-kit.com/docs/0.x/mapbox) and to activate the map you can just follow the documentation on this part.
+
 ## Update Configurations
 
-In your `config/filesystems.php` config file add the following to the disks section:
+In your `config/filesystems.php` config file add the following to the disks and links section:
 
 ```php
 
 'disks' => [
     ...
 
-    /** Shopper Files Uploads. */
+    /** Shopper Uploads Disks. */
     'avatars' => [
         'driver' => 'local',
         'root' => storage_path('app/avatars'),
@@ -189,6 +194,24 @@ In your `config/filesystems.php` config file add the following to the disks sect
 
 ],
 
+/*
+|--------------------------------------------------------------------------
+| Symbolic Links
+|--------------------------------------------------------------------------
+|
+| Here you may configure the symbolic links that will be created when the
+| `storage:link` Artisan command is executed. The array keys should be
+| the locations of the links and the values should be their targets.
+|
+*/
+
+'links' => [
+    ...
+    
+    public_path('avatars') => storage_path('app/avatars'),
+    public_path('uploads') => storage_path('app/uploads'),
+],
+
 ```
 
 **Create New Folders**
@@ -197,12 +220,13 @@ After adding the 2 entries in the filesystem config file, you must create them a
 In your storage directory create 2 new folders called `avatars` and `uploads`.
 
 ```shell
-mkdir storage/avatars && mkdir storage/uploads
+mkdir storage/app/avatars && mkdir storage/app/uploads
 ```
 
 In each new folder that you have created (avatars and uploads) you must create a .gitignore file which will contain the following line
 
 ```shell
+*
 !.gitignore
 ```
 
