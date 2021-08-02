@@ -28,6 +28,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - run: rm -rf node_modules
       - run: yarn
       - run: yarn build
       - run: pm2 reload docs.laravelshopper.io
