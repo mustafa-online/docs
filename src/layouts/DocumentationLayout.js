@@ -24,7 +24,7 @@ const nav = {
     pages['configuration']
   ],
   'Concepts': [
-    pages['channels'],
+    // pages['channels'],
     pages['locations'],
     pages['roles-permissions'],
     pages['two-factor'],
