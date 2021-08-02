@@ -39,27 +39,7 @@ This will install shopper, publish vendor files, create shopper and storage syml
 And we're all good to go!
 
 
-## <Heading number="4">Create an Admin user</Heading>
-
-Now we can create a new super user and sign into the Dashboard and start creating some content to display on the frontend.
-
-Run the following command to create a user with supreme \(at the moment of creation\) rights:
-
-```bash
-php artisan shopper:admin
-```
-
-And you will be prompted for the users username, firstname, lastname and password.
-
-## <Heading number="5">Publish Vendor Files</Heading>
-
-If you want to publish again Shopper's vendor files run these commands:
-
-```bash
-php artisan shopper:publish
-```
-
-## <Heading number="5">Update Existing Files</Heading>
+## <Heading number="4">Update Existing Files</Heading>
 
 Extend your current User Model \(usually `app/Models/User.php`\) using the `Shopper\Framework\Models\User\User as Authenticatable` alias:
 
@@ -72,6 +52,27 @@ class User extends Authenticatable
 {
     // ...
 }
+```
+
+
+## <Heading number="5">Create an Admin user</Heading>
+
+Now we can create a new super user and sign into the Dashboard and start creating some content to display on the frontend.
+
+Run the following command to create a user with supreme \(at the moment of creation\) rights:
+
+```bash
+php artisan shopper:admin
+```
+
+And you will be prompted for the users username, firstname, lastname and password.
+
+## <Heading number="6">Publish Vendor Files</Heading>
+
+If you want to publish again Shopper's vendor files run these commands:
+
+```bash
+php artisan shopper:publish
 ```
 
 To run the project you may use the built-in server: `php artisan serve`
